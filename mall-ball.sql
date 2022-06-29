@@ -26,7 +26,7 @@ USE mall_ball;
 -- --------------------
 DROP TABLE IF EXISTS pl_role;
 CREATE TABLE pl_role(
-    id int  NOT NULL PRIMARY KEY comment '主角ID,主键,自增',
+    id int  NOT NULL PRIMARY KEY AUTO_INCREMENT comment '主角ID,主键,自增',
     role_name varchar(30)  NOT NULL comment '角色名称',
     role_level int DEFAULT 1 NOT NULL comment '角色等级'
 ) comment '羽毛球场角色表单';
@@ -45,7 +45,7 @@ INSERT INTO pl_role VALUES (3,'SVIP会员',3);
 -- ------------------
 DROP TABLE IF EXISTS pl_user;
 CREATE TABLE pl_user(
-    id int NOT NULL PRIMARY KEY comment '用户ID,主键，自增',
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT comment '用户ID,主键，自增',
     uuid varchar(100) NOT NULL  comment '用户id',
     role_id int NOT NULL comment '角色ID，pl_role.id的外键',
     constraint pl_user_role foreign key (role_id) references pl_role(id)
@@ -57,7 +57,7 @@ CREATE TABLE pl_user(
 -- --------------------
 DROP TABLE IF EXISTS pl_court;
 CREATE TABLE pl_court(
-    id int NOT NULL PRIMARY KEY comment '羽毛球管ID,主键，自增',
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT comment '羽毛球管ID,主键，自增',
     court_name varchar(30)  NOT NULL comment '羽毛球馆的名字',
     court_address varchar(50)  NOT NULL comment '羽毛球馆的地址',
     court_status enum('0','100') NOT NULL  comment '羽毛球馆开放状态',
@@ -73,7 +73,7 @@ CREATE TABLE pl_court(
 -- --------------------------
 DROP TABLE IF EXISTS pl_deal_history;
 CREATE TABLE pl_deal_history(
-    id int  NOT NULL PRIMARY KEY  comment '交易ID,主键,自增',
+    id int  NOT NULL PRIMARY KEY AUTO_INCREMENT  comment '交易ID,主键,自增',
     deal_user_id int  NOT NULL  comment '用户ID,pl_user.id的外键',
     deal_court_id int  NULL comment '羽毛球馆ID,pl_court.id的外键',
     deal_playgroud_no text  NULL comment '场序列号',
